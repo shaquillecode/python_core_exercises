@@ -1,47 +1,36 @@
 import unittest
-from core.py import core
+from core import Core
 
-Class CoreAddTests(unittest.TestCase):
+class CountStringTest(unittest.TestCase):
 
-def test_count_alphabet(test_input):
-    """ 
-    Test the ability to count only the alphabet from a given sequence of string"
-	"""
-    test_input.assertEqual(countAll("P@#yn26at^&i5ve"), )
-    pass
+    @classmethod
+    def setUp(cls):
+        cls.solution = Core()
 
-def test_count_digits():
-    """ 
-    Test the ability to count only the digits 0 - 9 from a given sequence of string"
-	"""
-    pass
+    def test_count_alpha(self):
+        """
+        This is a Test for counting all of the Alphabetic characters from a given sequence of string
+        """
 
-def test_count_special():
-    """ 
-    Test the ability to count all the special characters which is not digits 0 - 9 or the alphabet from a given sequence of string"
-	"""
-    pass
+        str1 = "P@#yn26at^&i5ve" 
+        self.assertEqual(self.solution.countAlphabet(str1), 8)
 
-# class CalculatorAddTests(unittest.TestCase):
+    def test_count_digit(self):
+        """
+        This is a Test for counting only the digits 0 - 9 from a given sequence of string
+        """
 
-# 	@classmethod
-# 	def setUpClass(cls):
-# 		"""
-# 		instantiate our class  (fixture)
-# 		"""
-# 		cls.calc = Calculator()
+        str1 = "P@#yn26at^&i5ve" 
+        self.assertEqual(self.solution.countDigit(str1), 3)
 
-# 	def test_add_integers(self):
-# 		""" 
-# 		Test the addition of integers
-# 		"""
-# 		self.assertEqual(self.calc.add(2,3), 5)
+    def test_count_symbol(self):
+        """
+        This is a Test for counting only special symbols and not alphanumeric characters from a given sequence of string
+        """
+        str1 = "P@#yn26at^&i5ve" 
+        self.assertEqual(self.solution.countSymbol(str1), 4)
 
-# 	def test_add_floats(self):
-# 		""" 
-# 		Test the addition of floats
-# 		"""
-# 		self.assertEqual(self.calc.add(2.0,3.2), 5.2)
+
 
 if __name__ == '__main__':
     unittest.main()
