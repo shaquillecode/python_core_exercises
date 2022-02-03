@@ -1,4 +1,4 @@
-<h2>This is a git repo called 'python_core_exercises</h2> 
+<h2>This is a git repo called 'python_core_exercises'</h2> 
 <h2>Added the following solutions below to the repo</h2>
 <h2>Included 'tests' directory for unit testing</h2>
 
