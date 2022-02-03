@@ -1,19 +1,19 @@
-1.This is a git repo called 'python_core' 
-2.Added the following solutions below to the repo
-3.Included 'tests' directory for unit testing
+<h2>This is a git repo called 'python_core_exercises</h2> 
+<h2>Added the following solutions below to the repo</h2>
+<h2>Included 'tests' directory for unit testing</h2>
 
-Exercise 1
-Count all letters, digits, and special symbols from a given string
+<p>Exercise 1</p>
+<p>Count all letters, digits, and special symbols from a given string</p>
 
-input: str1 = "P@#yn26at^&i5ve"
+<p>input: str1 = "P@#yn26at^&i5ve"</p>
 
-output: Total counts of Chars = 8, Digits = 3 , and Symbols = 4 
+<p>output: Total counts of Chars = 8, Digits = 3 , and Symbols = 4 </p>
 
-Exercise 2
-Given two strings str1 and str2 and below operations that can performed on str1.
+<p>Exercise 2</p>
+<p>Given two strings str1 and str2 and below operations that can performed on str1.</p>
 
-Find minimum number of edits (operations) required to convert ‘str1’ into ‘str2’.
-
+<p>Find minimum number of edits (operations) required to convert ‘str1’ into ‘str2’.</p>
+<br>
 Operations:
 
 1.Insert
