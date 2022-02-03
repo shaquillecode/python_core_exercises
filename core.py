@@ -1,14 +1,3 @@
-# Exercise 1
-# Count all letters, digits, and special symbols from a given string
-
-# input: str1 = "P@#yn26at^&i5ve"
-
-# output: Total counts of chars, digits, and symbols 
-
-# Chars = 8 
-# Digits = 3 
-# Symbol = 4
-
 class Core:
 
     """ 
@@ -64,10 +53,69 @@ class Core:
         # print(Symbols)
         # print(f"This is the count for Symbols {len(Symbols)}")
         return len(Symbols)
+    
+    def edit_distance(self,str1, str2):
+        """
+        case 1: the same length 
+        case 2: they are not the same length 
+        """
+
+        # if the strings are the same, edit distance = 0
+        if str1 == str2:
+            return 0
+
+        # the case if the strings are the same length
+        # ben, hen
+        if len(str1) == len(str2):
+            counter = 0
+            for idx, ch_ in enumerate(str1):
+                if ch_ != str2[idx]:
+                    counter += 1
+
+            return counter
+
+        if len(str1) != len(str2):
+            counter = 0
+            # add the difference
+            # i.e. the then -> 4 - 3 =  1
+
+            larger = None
+            smaller = None
+
+            if len(str1) > len(str2):
+                larger = str1
+                smaller = str2
+            else:
+                larger = str2
+                smaller = str1
+
+            offset = len(larger) - len(smaller)
+            counter += offset
+
+            for idx, ch_ in enumerate(smaller):
+                if ch_ != larger[idx]:
+                    counter += 1
+
+            return counter
 
 if __name__ == '__main__':
     str1 = "P@#yn26at^&i5ve"
+    WD_1 = "the"
+    WD_2 = "hen"
+    WD_3 = "ben"
+    WD_4 = "then"
+    WD_5 = "again"
     solution = Core()
     print(solution.countAlphabet(str1))
     print(solution.countDigit(str1))
     print(solution.countSymbol(str1))
+    print(
+        f"The distance of '{WD_1}' and '{WD_1}' is { solution.edit_distance(WD_1, WD_1)}")
+    print(
+        f"The distance of '{WD_2}' and '{WD_3}' is { solution.edit_distance(WD_2, WD_3)}")
+    print(
+        f"The distance of '{WD_1}' and '{WD_4}' is { solution.edit_distance(WD_1, WD_4)}")
+    print(
+        f"The distance of '{WD_1}' and '{WD_4}' is { solution.edit_distance(WD_4, WD_1)}")
+    print(
+        f"The distance of '{WD_1}' and '{WD_5}' is { solution.edit_distance(WD_1, WD_5)}")
