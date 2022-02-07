@@ -3,7 +3,50 @@ class Core:
     """ 
     A module for multiple in class python core assignments  
     """
+    def edit_distance(self,str1, str2):
+        """
+        case 1: the same length 
+        case 2: they are not the same length 
+        """
 
+        # if the strings are the same, edit distance = 0
+        if str1 == str2:
+            return 0
+
+        # the case if the strings are the same length
+        # ben, hen
+        if len(str1) == len(str2):
+            counter = 0
+            for idx, ch_ in enumerate(str1):
+                if ch_ != str2[idx]:
+                    counter += 1
+
+            return counter
+
+        if len(str1) != len(str2):
+            counter = 0
+            # add the difference
+            # i.e. the then -> 4 - 3 =  1
+
+            larger = None
+            smaller = None
+
+            if len(str1) > len(str2):
+                larger = str1
+                smaller = str2
+            else:
+                larger = str2
+                smaller = str1
+
+            offset = len(larger) - len(smaller)
+            counter += offset
+
+            for idx, ch_ in enumerate(smaller):
+                if ch_ != larger[idx]:
+                    counter += 1
+
+            return counter
+    
     def countAlphabet(self,str1):
         """
         This is the count for all of the Alphabetic characters from a given sequence of string
@@ -53,50 +96,19 @@ class Core:
         # print(Symbols)
         # print(f"This is the count for Symbols {len(Symbols)}")
         return len(Symbols)
-    
-    def edit_distance(self,str1, str2):
+
+    def is_anagram(self,char1,char2):
         """
-        case 1: the same length 
-        case 2: they are not the same length 
+        This will check if the given sequence of the two strings (char1 and char2) are anagrams of each other
         """
+        if isinstance(char1,str) and isinstance(char2,str):
+            # print(sorted(list(char1)))
+            # print(sorted(list(char2)))
 
-        # if the strings are the same, edit distance = 0
-        if str1 == str2:
-            return 0
+            if sorted(char1) == sorted(char2):
+                return True
+        return False
 
-        # the case if the strings are the same length
-        # ben, hen
-        if len(str1) == len(str2):
-            counter = 0
-            for idx, ch_ in enumerate(str1):
-                if ch_ != str2[idx]:
-                    counter += 1
-
-            return counter
-
-        if len(str1) != len(str2):
-            counter = 0
-            # add the difference
-            # i.e. the then -> 4 - 3 =  1
-
-            larger = None
-            smaller = None
-
-            if len(str1) > len(str2):
-                larger = str1
-                smaller = str2
-            else:
-                larger = str2
-                smaller = str1
-
-            offset = len(larger) - len(smaller)
-            counter += offset
-
-            for idx, ch_ in enumerate(smaller):
-                if ch_ != larger[idx]:
-                    counter += 1
-
-            return counter
 
 if __name__ == '__main__':
     str1 = "P@#yn26at^&i5ve"
@@ -106,9 +118,6 @@ if __name__ == '__main__':
     WD_4 = "then"
     WD_5 = "again"
     solution = Core()
-    print(solution.countAlphabet(str1))
-    print(solution.countDigit(str1))
-    print(solution.countSymbol(str1))
     print(
         f"The distance of '{WD_1}' and '{WD_1}' is { solution.edit_distance(WD_1, WD_1)}")
     print(
@@ -119,3 +128,8 @@ if __name__ == '__main__':
         f"The distance of '{WD_1}' and '{WD_4}' is { solution.edit_distance(WD_4, WD_1)}")
     print(
         f"The distance of '{WD_1}' and '{WD_5}' is { solution.edit_distance(WD_1, WD_5)}")
+    print(solution.countAlphabet(str1))
+    print(solution.countDigit(str1))
+    print(solution.countSymbol(str1))
+    print(solution.is_anagram("state","taste"))
+    print(solution.is_anagram(9.2,"taste"))
