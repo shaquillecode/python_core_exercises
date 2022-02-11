@@ -1,3 +1,6 @@
+"""
+This is a class for Anagram Tests
+"""
 import unittest
 from core import Core
 
