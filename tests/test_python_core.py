@@ -59,9 +59,9 @@ class CorePythonTest(unittest.TestCase):
         """
         Caesar Cipher
         """
-        plane_text = "abcd xyzzzz ZZZZ"
+        plain_text = "abcd xyzzzz ZZZZ"
         cipher_text = "EFGH BCDDDD DDDD"
-        self.assertEqual(ceasar_cipher(plane_text,4), cipher_text)
+        self.assertEqual(ceasar_cipher(plain_text,4), cipher_text)
 
 
 if __name__ == '__main__':
