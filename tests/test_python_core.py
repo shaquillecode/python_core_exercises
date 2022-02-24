@@ -63,6 +63,12 @@ class CorePythonTest(unittest.TestCase):
         cipher_text = "EFGH BCDDDD DDDD"
         self.assertEqual(ceasar_cipher(plain_text,4), cipher_text)
 
+    def test_sq_digits(self):
+        """
+        Test will square every digit of a given number
+        then concatenate the results as a string, returns integer
+        """
+        self.assertEqual(self.solution.sq_digits(9119), 811181)
 
 if __name__ == '__main__':
     unittest.main()

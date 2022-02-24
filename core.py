@@ -21,8 +21,7 @@ class Core:
         """
         if isinstance(num, int):
             return sum([i for i in range(1,num+1)])
-        else:
-            return 0
+        return 0
 
 
     def count_alphabet(self,str1):
@@ -36,7 +35,8 @@ class Core:
                 alphabet += str1[i]
         # print(alphabet)
         # print(f"This is the count for all of the Alphabetic characters {len(alphabet)}")
-        return len(alphabet)
+        res = len(alphabet)
+        return res
 
 
     def count_digit(self,str1):
@@ -50,26 +50,26 @@ class Core:
                 digits = digits + str1[i]
         # print(digits)
         # print(f"This is the count for Digits {len(digits)}")
-        return len(digits)
+        res = len(digits)
+        return res
 
 
     def count_symbol(self,str1):
         """
-        Counts only special symbols from a given sequence of string
+        Counts only the special symbols from a given sequence of string
         """
-        alphabet = ""
-        digits = ""
         symbols = ""
         for i,char in enumerate(str1):
             if str1[i].isdigit():
-                digits = digits + str1[i]
+                continue
             elif((str1[i] >= 'A' and str1[i] <= 'Z') or (str1[i] >= 'a' and str1[i] <= 'z')):
-                alphabet += str1[i]
+                continue
             else:
                 symbols += str1[i]
         # print(symbols)
         # print(f"This is the count for Symbols {len(symbols)}")
-        return len(symbols)
+        res = len(symbols)
+        return res
 
 
     def edit_distance(self,str1, str2):
@@ -86,8 +86,8 @@ class Core:
         # ben, hen
         if len(str1) == len(str2):
             counter = 0
-            for idx, ch_ in enumerate(str1):
-                if ch_ != str2[idx]:
+            for idx, char in enumerate(str1):
+                if char != str2[idx]:
                     counter += 1
 
             return counter
@@ -110,8 +110,8 @@ class Core:
             offset = len(larger) - len(smaller)
             counter += offset
 
-            for idx, ch_ in enumerate(smaller):
-                if ch_ != larger[idx]:
+            for idx, char in enumerate(smaller):
+                if char != larger[idx]:
                     counter += 1
 
             return counter
@@ -129,9 +129,35 @@ class Core:
                 return True
         return False
 
+    def add_series(self,num):
+        """
+        Returns the sum of following series upto nth term(parameter)
+        Output = 1 + 1/4 + 1/7 + 1/10 + 1/13 + 1/16
+        """
+        series_list =[]
+        i = 1
+        if isinstance(num,int):
+            if num == 0:
+                return 0.0
 
+            while i < num+1:
+                series_list.append(1/(i*3-2))
+                i += 1
+            # print(series_list)
+            res = str(round(sum(series_list),2))
+            return res
 
-
+    def sq_digits(self, num):
+        """
+        This function squares every digit of a given number
+        Then concatenates the results as a string
+        Then returns an integer
+        Input = 9119
+        Output = 811181
+        """
+        if isinstance(num,int):
+            res = int("".join([str(int(num_str)**2) for num_str in str(num)]))
+        return res
 
 
 if __name__ == '__main__':
@@ -148,3 +174,5 @@ if __name__ == '__main__':
     print(solution.count_digit(STR_J))
     print(solution.count_symbol(STR_J))
     print(solution.is_anagram("state","taste"))
+    print(f"The sum of the series in this list = {solution.add_series(5)}")
+    print(solution.sq_digits(9119))
