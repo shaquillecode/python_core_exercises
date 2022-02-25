@@ -1,15 +1,14 @@
 <h2>This is a git repo called 'python_core_exercises'</h2> 
-<h2>Added the following solutions below to the repo</h2>
 <h2>Included 'tests' directory for unit testing</h2>
 
-<p>Exercise 1</p>
+<p>Some Examples exercises questions below</p>
 <p>Count all letters, digits, and special symbols from a given string</p>
 
 <p>input: str1 = "P@#yn26at^&i5ve"</p>
 
 <p>output: Total counts of Chars = 8, Digits = 3 , and Symbols = 4 </p>
 
-<p>Exercise 2</p>
+
 <p>Given two strings str1 and str2 and below operations that can performed on str1.</p>
 
 <p>Find minimum number of edits (operations) required to convert ‘str1’ into ‘str2’.</p>
