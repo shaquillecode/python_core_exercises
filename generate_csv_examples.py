@@ -1,6 +1,10 @@
+"""
+cleans punctuation, strips trailing white spaces
+lowercases everything
+"""
 import string
 import csv
-from copy import copy 
+from copy import copy
 from core import Core
 
 

@@ -1,3 +1,6 @@
+"""
+Housing CSV reader
+"""
 import csv
 
 # use the command 'wc' to figure out how many lines there are in the file.
