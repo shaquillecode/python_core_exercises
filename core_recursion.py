@@ -40,14 +40,14 @@ class CoreRecursive:
         This is a recursive function that takes a string of two letters
         and returns the following: 'ab', 'aabb', 'aaabbb'
         """
-    # build_str(3) = ab + build_str(2)
-    # build_str(2) = ab + build_str(1)
-    # build_str(1) = ab
+        # build_str(3) = ab + build_str(2)
+        # build_str(2) = ab + build_str(1)
+        # build_str(1) = ab
 
-    # ->
-    # build_str(2) = ab + ab = abab
-    # build_str(3) = ab + abab
-    # build_str(3) = ababab
+        # ->
+        # build_str(2) = ab + ab = abab
+        # build_str(3) = ab + abab
+        # build_str(3) = ababab
 
         if n == 0:
             return
@@ -107,7 +107,7 @@ class CoreRecursive:
         elif b == 1:
             return a
         else:
-            return a * self.power_func(b-1)
+            return a * self.power_func(a, b-1)
 
 
     def factorial_(self, num):
@@ -255,7 +255,7 @@ class CoreRecursive:
 
     def encode(self, str_, mappings = {'X':'code', 'Y': 'sleep'}):
         """
-        Given a string and a pattern, determine whether a string matches with a given pattern.
+        Given a string and a pattern, determine whether a string matches with a given pattern
         """
 
         res = ''
@@ -292,7 +292,7 @@ if __name__ == '__main__':
     print(solution.print_pascal(4))
     print("==="*35)
 
-    # solution.power_func(2, 4)
+    print(solution.power_func(2, 4))
     print("==="*35)
 
     print(solution.factorial_(5))
@@ -318,7 +318,7 @@ if __name__ == '__main__':
     print("==="*35)
 
     solution.findLexicographic('ACB')
-    print("==="*35)
+    print()
 
     print(solution.perm('abc'))
     print([letters for letters in permutations('abc')])
