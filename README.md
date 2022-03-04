@@ -1,7 +1,7 @@
 <h2>This is a git repo called 'python_core_exercises'</h2> 
 <h2>Included 'tests' directory for unit testing</h2>
 
-<p>Some Examples exercises questions below</p>
+<p>See some exercises questions below</p>
 <p>Count all letters, digits, and special symbols from a given string</p>
 
 <p>input: str1 = "P@#yn26at^&i5ve"</p>
