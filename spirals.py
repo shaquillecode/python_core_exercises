@@ -27,7 +27,6 @@ class Spirals:
 			self.col_end -= 1
 
 			if (self.row_start < self.row_end):
-
 				for i in range(self.col_end - 1, (self.col_start - 1), -1):
 					print(self.a[self.row_end - 1][i], end=" ")
 				self.row_end -= 1
@@ -44,19 +43,19 @@ class Spirals:
 			for j in i:
 				res.append(j)
 		res.sort()
-		
+
 		return res
-        
+
 
 if __name__ == '__main__':
-	
+
 
 	a = [[1, 2,  3,  4,  5],
 	    [16, 17, 18, 19, 6],
 	    [15, 24, 25, 20, 7],
 	    [14, 23, 22, 21, 8],
 	    [13, 12, 11, 10, 9]]
-		
+
 	R = 5
 	C = 5
 	sp = Spirals(R, C, a)

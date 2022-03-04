@@ -1,13 +1,17 @@
+"""
+Number to Binary converter
+Binary to Number converter
+String to ascii and ascii_sum converter
+"""
 import argparse
-from converter import *
+from format_converter import *
 
-parser = argparse.ArgumentParser(
-                    description="Tool for converting numbers to binary and vice versa")
-group = parser.add_mutually_exclusive_group() 
-group.add_argument('-n2b', '--numtobin', action='store', help='takes a number and returns a string of that number in binary')
-group.add_argument('-b2n', '--bintonum', action='store', help='takes a string of binary and returns the numbers it equates to')
-parser.add_argument('--ascii', action='store', help='takes a string and returns the ascii for each character')
-parser.add_argument('--ascii_sum', action='store', help='takes a string and returns a sum of the ascii numbers for all the characters')
+parser = argparse.ArgumentParser(description="Tool for converting numbers to binary and vice versa")
+group = parser.add_mutually_exclusive_group()
+group.add_argument('-nb', '--numtobin', action='store', help='Returns a string of binary')
+group.add_argument('-bn', '--bintonum', action='store', help='Returns the number from a given binary string')
+parser.add_argument('--ascii', action='store', help='Returns the ascii number for each character')
+parser.add_argument('--ascii_sum', action='store', help='Returns a sum of the ascii numbers for all the characters from a given string')
 
 args = parser.parse_args()
 
@@ -24,5 +28,3 @@ if args.ascii:
 
 if args.ascii_sum:
     print(ascii_sum(args.ascii_sum))
-
-
