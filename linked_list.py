@@ -11,223 +11,312 @@ Improvements to make:
 """
 
 class Node:
-	def __init__(self, data):
-		self.data = data
-		self.nextval = None
+    def __init__(self, data, start= True):
+        self.data = data
+        self.nextval = None
+        self.prev = None
+        self.start = start
 
-	def __str__(self):
-		return f"NODE({self.data})"
+    def __str__(self):
+        return f"NODE({self.data})"
 
+
+class NodeTwoPointers(Node):
+
+    def __init__(self, data):
+        self.prev = None
+        self.data =  data
 
 class LinkedList:
 
 
-	SEPARATOR = "->"
+    SEPARATOR = "->"
+    CAPACITY = 5
 
-	def __init__(self):
-		self.head = None
-		self.CAPACITY = 5
-
-
-	def __insert_check(self, node):
-		""" 
-
-		private method check if insert is possible
-		throw an exception if other wise
-		"""
-		if self.is_full():
-			raise Exception(f"{node} Capacity exceeded, Insert Failed!")
-
-		if self.contains(node.data):
-			raise Exception(f"{node} already present! Insert Failed!") 
+    def __init__(self):
+        self.head = None
 
 
+    def safety_check(self, node):
+        """ 
 
-	def insert(self, node):
-		""" 
-		param: Node
-		return: None
-		Inserts a node into the linked list (At the end of the list)
-		"""
+        private method check if insert is possible
+        throw an exception if other wise
+        """
+        if self.is_full():
+            raise Exception(f"{node} Capacity exceeded, Insert Failed!")
 
-		# covers the case where the linked list is empty
-
-
-		# if not self.head  == if self.head is None
-		if self.is_empty():
-			self.head = node
-		else:
-
-			self.__insert_check(node)
-			curr = self.head
-			while curr.nextval:
-				curr = curr.nextval
-			curr.nextval = node
-
-
-	def delete(self, val):
-
-		""" 
-		param: string
-		return: None
-
-		delete a value from the linked list
-
-		"""
-
-		deleted = False
-		if self.is_empty():
-			return
-		else:
-
-			curr = self.head
-
-			# handle the case that it's at the front of the list
-			if curr.data == val:
-				self.head = curr.nextval
-				return
-
-			# otherwise look through the list
-			while curr:
-				if curr.nextval.data == val:
-					curr.nextval = curr.nextval.nextval
-					break
-				curr = curr.nextval
+        if self.contains(node.data):
+            raise Exception(f"{node} already present! Insert Failed!") 
 
 
 
-	def contains(self, val):
+    def push(self, node):
 
-		""" 
-		param: string
-		return: boolean
-
-		Checks if a value exists in the list 
-		"""
-		
-		if self.is_empty():
-			return False
-		else:
-			curr = self.head
-
-			# check if first element 
-			# is equal to the value we are looking for
-
-			# iterate through the linked list looking for the value
-			while curr:
-				if curr.data == val:
-					return True 
-				curr = curr.nextval
-
-		return False
+        if not self.is_full():
+            node.nextval = self.head 
+            self.head = node
+        else:
+            raise Exception("Linked List already full! pushed Failed")
 
 
-	def length(self, MAX = 5):
-		""" 
+    def insert(self, node):
+        """ 
+        param: Node
+        return: None
+        Inserts a node into the linked list (At the end of the list)
+        """
 
-		param: None
-		return: int
+        # covers the case where the linked list is empty
 
-		Gets the length of the linked list
-		"""
 
-		counter = 0
+        # if not self.head  == if self.head is None
+        if self.is_empty():
+            self.head = node
+        else:
+            self.safety_check(node)
+            curr = self.head
+            while curr.nextval:
+                curr = curr.nextval
+            curr.nextval = node
 
-		if not self.head:
-			return counter
-		else:
-			curr = self.head
 
-			while curr:
-				counter += 1
-				curr = curr.nextval
+    def delete(self, val):
 
-		return counter
+        """ 
+        param: string
+        return: None
 
-	def is_empty(self):
+        delete a value from the linked list
 
-		""" 
-		param: none
-		return: boolean
-		Checks if the linked list is empty
-		"""
+        """
 
-		if not self.head:
-			return True
-		return False
+        deleted = False
+        if self.is_empty():
+            return
+        else:
 
-	def is_full(self):
-		""" 
-		param: none
-		return: boolean
-		Checks if the linked list is empty
-		"""
-		if self.length() == self.CAPACITY:
-			return True 
-		return False
+            curr = self.head
+
+            # handle the case that it's at the front of the list
+            if curr.data == val:
+                self.head = curr.nextval
+                return
+
+            # otherwise look through the list
+            while curr:
+                if curr.nextval.data == val:
+                    curr.nextval = curr.nextval.nextval
+                    break
+                curr = curr.nextval
 
 
 
-	def __str__(self):
-		
-		res = str()
+    def contains(self, val):
 
-		if not self.head:
-			return "List is empty"
-		else:
-			curr = self.head 
-			while curr:
-				#add data to the string representation
-				res += curr.data
+        """ 
+        param: string
+        return: boolean
 
-				# only add an arrow when there is a next element
-				if curr.nextval:
-					res += self.SEPARATOR
+        Checks if a value exists in the list 
+        """
 
-				# set the next element equal to curr (AKA: iterate)
-				curr = curr.nextval
+        if self.is_empty():
+            return False
+        else:
+            curr = self.head
 
-		return res
+            # check if first element 
+            # is equal to the value we are looking for
 
+            # iterate through the linked list looking for the value
+            while curr:
+                if curr.data == val:
+                    return True 
+                curr = curr.nextval
+
+        return False
+
+
+    def length(self, MAX = 5):
+        """ 
+
+        param: None
+        return: int
+
+        Gets the length of the linked list
+        """
+
+        counter = 0
+
+        if not self.head:
+            return counter
+        else:
+            curr = self.head
+
+            while curr:
+                counter += 1
+                curr = curr.nextval
+
+        return counter
+
+    def is_empty(self):
+
+        """ 
+        param: none
+        return: boolean
+        Checks if the linked list is empty
+        """
+
+        if not self.head:
+            return True
+        return False
+
+    def is_full(self):
+        """ 
+        param: none
+        return: boolean
+        Checks if the linked list is empty
+        """
+        if self.length() == self.CAPACITY:
+            return True 
+        return False
+
+
+
+    def __str__(self):
+
+        res = str()
+
+        if not self.head:
+            return "List is empty"
+        else:
+            curr = self.head 
+            while curr:
+                #add data to the string representation
+                res += curr.data
+
+                # only add an arrow when there is a next element
+                if curr.nextval:
+                    res += self.SEPARATOR
+
+                # set the next element equal to curr (AKA: iterate)
+                curr = curr.nextval
+
+        return res
+
+
+class DoublyLinkedList(LinkedList):
+    SEPARATOR = "<->"
+
+
+    def insert(self, node):
+
+        if self.is_empty():
+            self.head = node
+        else:
+            self.safety_check(node)
+            curr = self.head
+            while curr.nextval:
+                curr = curr.nextval
+
+            curr.nextval = node
+            node.prev = curr
+
+
+    def push(self, node):
+
+        self.safety_check()
+        node.nextval = self.head
+        self.head = node 
+
+    def delete(self):
+        """ 
+        param: string
+        return: None
+
+        delete a value from the linked list
+
+        """
+
+        deleted = False
+        if self.is_empty():
+            return
+        else:
+
+            curr = self.head
+
+            # handle the case that it's at the front of the list
+            if curr.data == val:
+                self.head = curr.nextval
+                return
+
+            # otherwise look through the list
+            while curr:
+                if curr.nextval.data == val:
+                    curr.nextval = curr.nextval.nextval
+                    curr.nextval.prev = curr
+                    break
+                curr = curr.nextval
+
+class CircularDoublyLinkedList(LinkedList):
+	pass
 
 
 
 
 if __name__ == '__main__':
 
-	list1  = LinkedList()
+    list1  = LinkedList()
 
-	node1 = Node("A")
-	node2 = Node("B")
-	node3 = Node("C")
-	node4 = Node("D")
-	node5 = Node("E")
-	node6 = Node("F")
+    list_d = DoublyLinkedList() 
 
-	list1.insert(node1)
-	list1.insert(node2)
-	list1.insert(node3)
-	list1.insert(node4)
-	list1.insert(node5)
-	#list1.insert(node6)
+    #node1_d = Node("A")
+    #print(node1_d)
 
-	# print(list1.contains("B"))
-	# print(list1.contains("A")) 
+    #list_d.insert(node1_d)
 
-	print(list1)
+    node1 = Node("A")
+    node2 = Node("B")
+    node3 = Node("C")
+    node4 = Node("D")
+    node5 = Node("E")
+    node6 = Node("F")
 
-	list1.delete("C")
+    list1.insert(node1)
+    list1.insert(node2)
+    list1.insert(node3)
 
-	print(list1)
-	# print(list1.length()) 
+    list_d.insert(node4)
+    list_d.insert(node5)
+    list_d.insert(node6)
+
+    print(list_d)
+    print(list1)
+    list1.insert(node4)
+    # list1.insert(node5)
+    # list1.push(node6)
+    #list1.insert(node6)
+    print(list1)
+    print(list_d)
+
+    # print(list1.contains("B"))
+    # print(list1.contains("A")) 
+
+    # print(list1)
+
+    # list1.delete("B")
+
+    # print(list1)
+    # print(list1.length()) 
 
 
-	# A -> None
-	# A -> B -> None
-	# A -> B -> C
+    # A -> None
+    # A -> B -> None
+    # A -> B -> C
 
 
-	# print(f"head of list: {list1.head}")
-	# print(f"first element of list1: {list1.head.nextval}")
-	# print(f"second element of list1: {list1.head.nextval.nextval}")
-	# print(f"second element of list1: {list1.head.nextval.nextval.nextval}")
+    # print(f"head of list: {list1.head}")
+    # print(f"first element of list1: {list1.head.nextval}")
+    # print(f"second element of list1: {list1.head.nextval.nextval}")
+    # print(f"second element of list1: {list1.head.nextval.nextval.nextval}")
