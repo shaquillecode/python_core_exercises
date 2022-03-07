@@ -1,45 +1,45 @@
 """
 Format converter
 """
-# Ex A
-# python3 binary_cli.py --ascii_sum "hello world"
+# Ex. A
+# python3 format_converter_cli.py --ascii_sum "hello world"
 # -> 1116
 def ascii_sum(str_):
     """
-    Sum of ascii numbers
-    Format converter
+    Returns a sum of the ascii numbers 
+    for all the characters from a given string
     """
     sum_of_letts = sum([ord(x) for x in str_])
     return sum_of_letts
 
 
 # Ex. B
-# python3 binary_cli.py --ascii "hello world"
+# python3 format_converter_cli.py --ascii "hello world"
 # [104, 101, 108, 108, 111, 32, 119, 111, 114, 108, 100]
 def list_ascii(str_):
     """
-    List of ascii numbers
-    Format converter
+    Returns the ascii number
+    for each character from a given string
     """
     nums = [ord(x) for x in str_]
     return nums
 
 # Ex. C
-# python3 binary_cli.py -bn "101101"
+# python3 format_converter_cli.py  -nb 45
 def num_to_bin(num):
     """
-    Number to Binary
-    Format converter
+    Returns a string of binary
+    from a given integer
     """
     num = int(num)
     res = str(bin(num))[2:]
     return res
 
 # Ex. D
-# python3 binary_cli.py -nb 45
+# python3 format_converter_cli.py -bn "101101"
 def bin_to_num(bin):
     """
-    Binary to Number
-    Format converter
+    Returns a integer 
+    from a given binary string
     """
     return int(bin, 2)
