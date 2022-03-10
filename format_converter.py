@@ -6,7 +6,7 @@ Format converter
 # -> 1116
 def ascii_sum(str_):
     """
-    Returns a sum of the ascii numbers 
+    Returns a sum of the ascii numbers
     for all the characters from a given string
     """
     sum_of_letts = sum([ord(x) for x in str_])
@@ -39,7 +39,7 @@ def num_to_bin(num):
 # python3 format_converter_cli.py -bn "101101"
 def bin_to_num(bin):
     """
-    Returns a integer 
+    Returns a integer
     from a given binary string
     """
     return int(bin, 2)

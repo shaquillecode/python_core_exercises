@@ -21,6 +21,7 @@ def ceasar_cipher(text, shift):
             ciph = ciph + " "
     return ciph
 
+
 if __name__ == '__main__':
     PLAIN_TEXT = "abcd xyzzzz ZZZZ"
     CIPHER_TEXT = "EFGH BCDDDD DDDD"

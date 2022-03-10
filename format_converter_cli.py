@@ -13,7 +13,6 @@ parser.add_argument('--ascii_sum', action='store', help='Returns a sum of the as
 parser.add_argument('--ascii', action='store', help='Returns the ascii number')
 group.add_argument('-nb', '--numtobin', action='store', help='Returns a string of binary')
 group.add_argument('-bn', '--bintonum', action='store', help='Returns a integer')
-
 args = parser.parse_args()
 # print(args)
 

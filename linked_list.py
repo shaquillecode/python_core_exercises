@@ -1,5 +1,5 @@
-""" 
-Implementation of a Linked List 
+"""
+Implementation of a Linked List
 
 Improvements to make:
 
@@ -38,7 +38,7 @@ class LinkedList:
 
 
     def safety_check(self, node):
-        """ 
+        """
 
         private method check if insert is possible
         throw an exception if other wise
@@ -47,21 +47,21 @@ class LinkedList:
             raise Exception(f"{node} Capacity exceeded, Insert Failed!")
 
         if self.contains(node.data):
-            raise Exception(f"{node} already present! Insert Failed!") 
+            raise Exception(f"{node} already present! Insert Failed!")
 
 
 
     def push(self, node):
 
         if not self.is_full():
-            node.nextval = self.head 
+            node.nextval = self.head
             self.head = node
         else:
             raise Exception("Linked List already full! pushed Failed")
 
 
     def insert(self, node):
-        """ 
+        """
         param: Node
         return: None
         Inserts a node into the linked list (At the end of the list)
@@ -83,7 +83,7 @@ class LinkedList:
 
     def delete(self, val):
 
-        """ 
+        """
         param: string
         return: None
 
@@ -114,11 +114,11 @@ class LinkedList:
 
     def contains(self, val):
 
-        """ 
+        """
         param: string
         return: boolean
 
-        Checks if a value exists in the list 
+        Checks if a value exists in the list
         """
 
         if self.is_empty():
@@ -126,20 +126,20 @@ class LinkedList:
         else:
             curr = self.head
 
-            # check if first element 
+            # check if first element
             # is equal to the value we are looking for
 
             # iterate through the linked list looking for the value
             while curr:
                 if curr.data == val:
-                    return True 
+                    return True
                 curr = curr.nextval
 
         return False
 
 
     def length(self, MAX = 5):
-        """ 
+        """
 
         param: None
         return: int
@@ -162,7 +162,7 @@ class LinkedList:
 
     def is_empty(self):
 
-        """ 
+        """
         param: none
         return: boolean
         Checks if the linked list is empty
@@ -173,13 +173,13 @@ class LinkedList:
         return False
 
     def is_full(self):
-        """ 
+        """
         param: none
         return: boolean
         Checks if the linked list is empty
         """
         if self.length() == self.CAPACITY:
-            return True 
+            return True
         return False
 
 
@@ -191,7 +191,7 @@ class LinkedList:
         if not self.head:
             return "List is empty"
         else:
-            curr = self.head 
+            curr = self.head
             while curr:
                 #add data to the string representation
                 res += curr.data
@@ -228,10 +228,10 @@ class DoublyLinkedList(LinkedList):
 
         self.safety_check()
         node.nextval = self.head
-        self.head = node 
+        self.head = node
 
     def delete(self):
-        """ 
+        """
         param: string
         return: None
 
@@ -247,20 +247,21 @@ class DoublyLinkedList(LinkedList):
             curr = self.head
 
             # handle the case that it's at the front of the list
-            if curr.data == val:
+            if curr.data == self.nextval:
                 self.head = curr.nextval
                 return
 
             # otherwise look through the list
             while curr:
-                if curr.nextval.data == val:
+                if curr.nextval.data == self.nextval:
                     curr.nextval = curr.nextval.nextval
                     curr.nextval.prev = curr
                     break
                 curr = curr.nextval
 
 class CircularDoublyLinkedList(LinkedList):
-	pass
+    """CircularDoublyLinkedList"""
+    pass
 
 
 
@@ -269,7 +270,7 @@ if __name__ == '__main__':
 
     list1  = LinkedList()
 
-    list_d = DoublyLinkedList() 
+    list_d = DoublyLinkedList()
 
     #node1_d = Node("A")
     #print(node1_d)
@@ -301,14 +302,14 @@ if __name__ == '__main__':
     print(list_d)
 
     # print(list1.contains("B"))
-    # print(list1.contains("A")) 
+    # print(list1.contains("A"))
 
     # print(list1)
 
     # list1.delete("B")
 
     # print(list1)
-    # print(list1.length()) 
+    # print(list1.length())
 
 
     # A -> None
