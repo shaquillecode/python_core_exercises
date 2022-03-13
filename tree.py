@@ -141,7 +141,7 @@ if __name__ == '__main__':
     print(root.get_level())
     print(root2.get_level())
     
-    print(root.print_all(res))
+    root.print_all(res)
 
     
    

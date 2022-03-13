@@ -3,27 +3,28 @@
 class Spiral():
     """Spiral Matrix"""
 
-    def __init__(self, col,row, list_):
+    def __init__(self, col,row, new_list):
         self.col = col
         self.row = row
-        self.one_dim = list_
+        self.one_dim = new_list
         self.two_dim = self.create_spiral_matrix()
 
     def create_spiral_matrix(self):
         """Create Spiral Matrix"""
 
-        #return [['-' for col in range(self.col)] for row in range(self.row)]
-
         matrix_tmp = []
         for row in range(self.row):
+            print(row)
             matrix_tmp.append(['-' for col in range(self.col)])
 
         return matrix_tmp
+
 
     def print_spiral(self):
         """Print Spiral"""
         for row in self.two_dim:
             print(row)
+
 
     def spiralize(self):
         """Spiralize"""
@@ -57,7 +58,9 @@ class Spiral():
             self.two_dim[row_idx][col_idx] = self.one_dim[one_dimension_pos]
 
 
-
+# The clean function will be used
+# With the final function to
+# print 1 list with n elements
 def clean(char):
     """Clean"""
     syms = [',', '[', ']', "'"]
@@ -67,9 +70,8 @@ def clean(char):
 
 def final(matrix_str):
     """Final"""
-    lis = matrix_str.split()
     digits_ = []
-    for char in lis:
+    for char in matrix_str.split():
         char = clean(char)
         if char.isdigit():
             digits_.append(int(char))
@@ -84,8 +86,8 @@ if __name__ == '__main__':
                 [14, 23, 22, 21, 8],
                 [13, 12, 11, 10, 9]]
 
-    list_ = str(a_matrix)
     sp = Spiral(3,3, [1,2,3,4,5,6,7,8,9])
     sp.spiralize()
-    sp.print_spiral()
-    print(final(list_))
+    print(sp.create_spiral_matrix()) #Create the Spiral
+    sp.print_spiral() # This will print the spiral
+    print(final(str(a_matrix)))
