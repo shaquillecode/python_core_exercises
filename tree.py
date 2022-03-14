@@ -1,19 +1,17 @@
-""" 
-A Tree represents the nodes connected by edges. It is a non-linear data structure. It has the following properties
+"""
+A Tree represents the nodes connected by edges.
+It is a non-linear data structure. It has the following properties
 
 One node is marked as Root node
 Every node other than the root is associated with one parent node.
 Each node can have any amount of children nodes
 
 """
-
-import re
-
-
 class Tree:
+    '''Tree'''
 
     def __init__(self, data):
-        self.left = None 
+        self.left = None
         self.right =  None
         self.data = data
 
@@ -30,7 +28,8 @@ class Tree:
     # 		self.__pre_order_traversal()
 
 
-    def in_order_traversal(self, root):        
+    def in_order_traversal(self, root):
+        '''In order'''
         res = []
 
         if root:
@@ -41,6 +40,7 @@ class Tree:
 
 
     def pre_order_traversal(self):
+        '''Pre order'''
         res = []
 
         if root:
@@ -51,17 +51,19 @@ class Tree:
 
 
     def post_order_traversal(self):
+        '''Post'''
         res = []
 
         if root:
-            
+
             res += self.in_order_traversal(root.left)
             res +=  self.in_order_traversal(root.right)
             res.append(root.data)
         return res
-        
+
 
     def insert(self, data):
+        '''Insert'''
 
         if self.data:
 
@@ -88,42 +90,53 @@ class Tree:
 
     def __str__(self):
         return f"{self.data}"
-        
+
     def search(self,data):
+        '''Search'''
         if data in self.in_order_traversal(self):
             return True
         return False
-    
+
     def get_level(self):
+        '''Get level'''
         depth = 0
         if self.left:
             depth = max(depth, self.left.get_level())
         if self.right:
-            depth = max(depth, self.right.get_level())   
+            depth = max(depth, self.right.get_level())
         return depth +1
-    
+
     def print_all(self,data):
+        '''Print all'''
         if root:
             print(data)
             print(root.left.right)
-            for i in data:
-                print(i)
+            # for i in data:
+            #     print(i)
+
+    def find_path(self, val, path=[]):
+        '''Find Path'''
+
+        if self.data == val:
+            print(path)
+            return
+
+        if self.left:
+            path.append(self.left.data)
+            self.left.find_path(val, path)
+
+        if self.right:
+            path.append(self.right.data)
+            self.right.find_path(val, path)
+        return path
 
 
-def main():
-    root = Tree(8)
-    root.insert(10)
-    root.insert(3)
-
-    return root
 
 if __name__ == '__main__':
-	
-    # nodes = [i for i in range(1, 11)]
+
+
     root = Tree(8)
-    root2 = Tree(6)
-    # root.insert(2)
-    # root.insert(3)
+    root2 = Tree(8)
     root.insert(10)
     root.insert(3)
     root.insert(6)
@@ -132,29 +145,12 @@ if __name__ == '__main__':
 
     res = root.in_order_traversal(root)
     print(res)
-    
-    print(root.left.right)
-    
+
+    pre_order_res = root.pre_order_traversal()
+    print(pre_order_res)
+
+    post_order_res = root.post_order_traversal()
+    print(post_order_res)
+
     print(root.search(6))
-    print(root2.search(8))
-    
-    print(root.get_level())
-    print(root2.get_level())
-    
-    root.print_all(res)
-
-    
-   
-	# for idx, node in enumerate(nodes):
-	# 	if idx % 2 == 0:
-	# 		tree.insert(node)
-	# 	else:
-	# 		tree.insert(node, left=False)
-
-
-	#tree.print_tree()
-
-
-	# print(tree.left)
-
-	# print(tree.right.right)
+    print(root.find_path(1))
