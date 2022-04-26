@@ -1,6 +1,5 @@
-"""
-A module for core recursion python programming practice
-"""
+"""A module for core recursion python programming practice"""
+
 from itertools import permutations
 
 class CoreRecursive:
@@ -10,45 +9,43 @@ class CoreRecursive:
 
     def countdown(self, num):
         """
-        This recursion function will count down
-        output will be in reverse order 0,1,2,3,4,5
+        This recursion function returns
+        A countdown 5,4,3,2,1!
         """
+        # -> countdown(5) - print(5) resolved THEN! num = (5-1) which is 4
+	    #    -> countdown(4) - print(4) resolved THEN! num = (4-1) which is 3
+ 		#       -> countdown(3)- print(3) resolved THEN! num = (3-1) which is 2
+ 		#          -> countdown(2) - print(2) resolved THEN! num = (2-1) which is 1
+ 		#             -> countdown(1) - print(1) resolved THEN! num = (1-1) which is 0
+ 		#                -> countdown(0) -> print(0) -resolved THEN! num = 0 will end IF statement
 
-        # countdown(5) -
-	    # -> countdown(4) - print(4) resolved
- 		#     -> countdown(3)- print(3) resolved
- 		# 	    -> countdown(2) - print(2) resolved
- 		# 		    ->  countdown(1) - print(1) resolved
- 		# 			    -> -> countdown(0) -> print(0) -resolved
-        if num != 0:
+        if num != 0: # => This is the base case and will end once num is equal to 0
+            print(num)
             self.countdown(num-1)
-        print(num, end = " ",)
 
     def all_divs(self, num):
         """
-        This will print all the numbers divisble by 2 up until that number
+        This function will print all the numbers divisble by 2
+        AND countdown by 2 until 2
         """
-        if num == 1:
+        if num == 1: # => This is the base case and will end once num is equal to 1
             return
         if num % 2 == 0:
-            print(num, end = " ")
+            print(num)
         return self.all_divs(num - 1)
-
 
     def build_str(self, a_str, n=3):
         """
         This is a recursive function that takes a string of two letters
         and returns the following: 'ab', 'aabb', 'aaabbb'
         """
-        # build_str(3) = ab + build_str(2)
-        # build_str(2) = ab + build_str(1)
-        # build_str(1) = ab
+        # -> build_str(3) = ab + build_str(2)
+        # -> build_str(2) = ab + build_str(1)
+        # -> build_str(1) = ab
 
-        # ->
-        # build_str(2) = ab + ab = abab
-        # build_str(3) = ab + abab
-        # build_str(3) = ababab
-
+        # -> build_str(2) = ab + ab = abab
+        # -> build_str(3) = ab + abab OR!!! -> build_str(3) = ababab
+        # base cases
         if n == 0:
             return
 
@@ -59,7 +56,7 @@ class CoreRecursive:
 
     def insert_letter(self, word, letter):
         """
-        Recursion insert letter function
+        Insert letter recursive function
         """
         # insert_letter('the', 'a') =  't' + 'a' + insert_letter('he', 'a')
         # insert_letter('he', 'a') = 'h' + 'a' + insert_letter('e', 'a')
@@ -81,10 +78,8 @@ class CoreRecursive:
         if num == 1:
             return [1]
         else:
-
             # row in pyramid always starts with 1
             line = [1]
-
             # recursive call to print_pascal (look at previous line)
             prev_line = self.print_pascal(num - 1)
 
@@ -109,7 +104,6 @@ class CoreRecursive:
         else:
             return a * self.power_func(a, b-1)
 
-
     def factorial_(self, num):
         """
         This will calculate the factorial
@@ -123,7 +117,7 @@ class CoreRecursive:
 
     def rev_list(self, MyList = [37, 1, 26]):
         """
-        This will reverse a list
+        This Function will reverse a list recursively
         """
         if len(MyList) == 0:
             return []
@@ -279,9 +273,9 @@ if __name__ == '__main__':
     Y = 'ACB'
 
     solution.countdown(5)
-    print()
+    print("==="*35)
     solution.all_divs(10)
-    print()
+    print("==="*35)
     print(solution.build_str('ab', 3))
     print(solution.insert_letter('the', 'a'))
     print("==="*35)

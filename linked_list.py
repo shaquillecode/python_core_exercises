@@ -1,16 +1,16 @@
 """
 Implementation of a Linked List
 
-Improvements to make:
-
-1) make sure insert doesn't insert the same value twice (no duplicates)
+1) Make sure the insert method
+doesn't insert the same value twice (no duplicates)
 2) returns all the data as one long string from linkedlist -> abcd
-3) implement delete
+3) Implement delete
 
 
 """
 
 class Node:
+    '''Node'''
     def __init__(self, data, start= True):
         self.data = data
         self.nextval = None
@@ -22,12 +22,14 @@ class Node:
 
 
 class NodeTwoPointers(Node):
+    '''NodeTwoPointers'''
 
     def __init__(self, data):
         self.prev = None
         self.data =  data
 
 class LinkedList:
+    '''Linked Lists'''
 
 
     SEPARATOR = "->"
@@ -52,6 +54,7 @@ class LinkedList:
 
 
     def push(self, node):
+        '''push'''
 
         if not self.is_full():
             node.nextval = self.head
@@ -272,11 +275,6 @@ if __name__ == '__main__':
 
     list_d = DoublyLinkedList()
 
-    #node1_d = Node("A")
-    #print(node1_d)
-
-    #list_d.insert(node1_d)
-
     node1 = Node("A")
     node2 = Node("B")
     node3 = Node("C")
@@ -292,19 +290,17 @@ if __name__ == '__main__':
     list_d.insert(node5)
     list_d.insert(node6)
 
-    print(list_d)
+
     print(list1)
+    print(list_d)
     list1.insert(node4)
-    # list1.insert(node5)
-    # list1.push(node6)
-    #list1.insert(node6)
+
     print(list1)
     print(list_d)
 
-    # print(list1.contains("B"))
-    # print(list1.contains("A"))
+    print(list1.contains("B"))
+    print(list1.contains("A"))
 
-    # print(list1)
 
     # list1.delete("B")
 
@@ -314,10 +310,10 @@ if __name__ == '__main__':
 
     # A -> None
     # A -> B -> None
-    # A -> B -> C
+    # A -> B -> C -> None
+    # A -> B -> C -> D -> None
 
-
-    # print(f"head of list: {list1.head}")
-    # print(f"first element of list1: {list1.head.nextval}")
-    # print(f"second element of list1: {list1.head.nextval.nextval}")
-    # print(f"second element of list1: {list1.head.nextval.nextval.nextval}")
+    print(f"Head of list: {list1.head}")
+    print(f"First element of list1: {list1.head.nextval}")
+    print(f"Second element of list1: {list1.head.nextval.nextval}")
+    print(f"Second element of list1: {list1.head.nextval.nextval.nextval}")

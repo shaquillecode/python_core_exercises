@@ -1,4 +1,7 @@
+'''This is an Object that will make a Spiral Matrix and De-Spiral a Matrix'''
+
 class Spirals:
+    '''This is an Object that will make a Spiral Matrix and De-Spiral a Matrix'''
 
     def __init__(self, row_end, col_end, a):
         self.row_end = row_end
@@ -18,19 +21,19 @@ class Spirals:
         """
         while (self.row_start < self.row_end and self.col_start < self.col_end):
             for i in range(self.col_start, self.col_end):
-                 print(self.a[self.row_start][i], end=" ")
+                print(self.a[self.row_start][i], end=" ")
             self.row_start += 1
 
             for i in range(self.row_start, self.row_end):
                 print(self.a[i][self.col_end - 1], end=" ")
             self.col_end -= 1
 
-            if (self.row_start < self.row_end):
+            if self.row_start < self.row_end:
                 for i in range(self.col_end - 1, (self.col_start - 1), -1):
-                     print(self.a[self.row_end - 1][i], end=" ")
+                    print(self.a[self.row_end - 1][i], end=" ")
                 self.row_end -= 1
 
-            if (self.col_start < self.col_end):
+            if self.col_start < self.col_end:
                 for i in range(self.row_end - 1, self.row_start - 1, -1):
                     print(self.a[i][self.col_start], end=" ")
                 self.col_start += 1
@@ -54,7 +57,8 @@ if __name__ == '__main__':
 
     R = 5
     C = 5
-    sp = Spirals(R, C, a)
+
+    sp = Spirals(R, C, a) # <== This is a 5 by 5 matrix
     sp.print_it()
     print()
     print(sp.despiral(a))

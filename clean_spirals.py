@@ -61,6 +61,7 @@ class Spiral():
 # The clean function will be used
 # With the final function to
 # print 1 list with n elements
+
 def clean(char):
     """Clean"""
     syms = [',', '[', ']', "'"]
@@ -89,5 +90,5 @@ if __name__ == '__main__':
     sp = Spiral(3,3, [1,2,3,4,5,6,7,8,9])
     sp.spiralize()
     print(sp.create_spiral_matrix()) #Create the Spiral
-    sp.print_spiral() # This will print the spiral
-    print(final(str(a_matrix)))
+    sp.print_spiral() # This function will return the printed 3 by 3 spiral matrix
+    print(final(str(a_matrix))) # <== This function will return a despiraled 5 by 5 matrix
